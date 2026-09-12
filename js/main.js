@@ -217,8 +217,9 @@ qrModal.addEventListener('hidden.bs.modal', function (event) {
 
 // Test link button
 document.getElementById('link-test-btn').addEventListener('click', function () {
-    var currentLink = linkEl.innerText.trim();
-    openWindow(currentLink);
+    const currentLink = linkEl.innerText.trim();
+    window.open(currentLink, "_blank", "noopener,noreferrer");
+
 })
 
 
