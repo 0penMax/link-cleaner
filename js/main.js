@@ -239,10 +239,7 @@ document.getElementById('install-btn').addEventListener('click', function () {
     }
 })
 
-// CLI install option in accordion
-if (['MacIntel', 'Macintosh', 'Linux', 'Win32', 'Windows'].includes(navigator.platform)) {
-    document.getElementById('accordion-cli-container').style.display = 'block';
-}
+
 
 // Check for 'url' parameter on Link Cleaner launch
 // This is used for the Web Share Target API, Apple Shortcut, Bookmarklet, OpenSearch, and custom automations
