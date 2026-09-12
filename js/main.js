@@ -2,7 +2,6 @@
 const isApplePlatform = ['MacIntel', 'Macintosh', 'iPhone', 'iPod', 'iPad'].includes(navigator.platform);
 
 // Initialize elements, modals, and toasts
-const mastodonModal = new bootstrap.Modal(document.getElementById('mastodon-modal'));
 const linkEl = document.getElementById('link-input');
 
 // Initialize settings
@@ -222,67 +221,6 @@ document.getElementById('link-test-btn').addEventListener('click', function () {
     openWindow(currentLink);
 })
 
-// Email button
-document.getElementById('email-btn').addEventListener('click', function () {
-    var currentLink = linkEl.innerText.trim();
-    var emailSubject = 'Link for you';
-    var emailBody = '\n\n\n' + currentLink;
-    window.open('mailto:?subject=' + encodeURIComponent(emailSubject) + '&body=' + encodeURIComponent(emailBody), '_blank');
-})
-
-// SMS button
-document.getElementById('sms-btn').addEventListener('click', function () {
-    var currentLink = linkEl.innerText.trim();
-    window.open('sms:?&body=' + encodeURIComponent(currentLink), '_blank');
-})
-
-// Mastodon button
-document.getElementById('mastodon-server-hostname').value = (localStorage['mastodon-server'] || '');
-document.getElementById('mastodon-share-btn').addEventListener('click', function () {
-    var currentLink = linkEl.innerText.trim();
-    var currentServer = document.getElementById('mastodon-server-hostname').value;
-    if (currentServer) {
-        localStorage['mastodon-server'] = currentServer;
-        var link = 'https://' + currentServer + '/share?text=' + encodeURIComponent(currentLink);
-        openWindow(link);
-        mastodonModal.hide();
-    }
-})
-
-// Facebook button
-document.getElementById('facebook-share-btn').addEventListener('click', function () {
-    var currentLink = linkEl.innerText.trim();
-    var link = 'https://www.facebook.com/sharer.php?u=' + encodeURIComponent(currentLink);
-    openWindow(link);
-})
-
-// LinkedIn button
-document.getElementById('linkedin-share-btn').addEventListener('click', function () {
-    var currentLink = linkEl.innerText.trim();
-    var link = 'https://www.linkedin.com/sharing/share-offsite/?url=' + encodeURIComponent(currentLink);
-    openWindow(link);
-})
-
-// Reddit button
-document.getElementById('reddit-share-btn').addEventListener('click', function () {
-    var currentLink = linkEl.innerText.trim();
-    var link = 'https://reddit.com/submit?url=' + encodeURIComponent(currentLink);
-    openWindow(link);
-})
-
-// Telegram button
-document.getElementById('telegram-share-btn').addEventListener('click', function () {
-    var currentLink = linkEl.innerText.trim();
-    var link = 'https://t.me/share/url?url=' + encodeURIComponent(currentLink);
-    openWindow(link);
-})
-
-// Bluesky button
-document.getElementById('bluesky-share-btn').addEventListener('click', function () {
-    var currentLink = linkEl.innerText.trim();
-    var link = 'https://bsky.app/intent/compose?text=' + encodeURIComponent(currentLink);
-    openWindow(link);
-})
 
 // Show the PWA option in the install modal if supported, or the Safari install method 
 if ('onbeforeinstallprompt' in window) {
